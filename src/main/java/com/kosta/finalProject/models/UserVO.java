@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -16,32 +18,33 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "USER_TB")
+@Table(name = "user_TB")
 public class UserVO {
 
 	@Id
-	@Column(name="USER_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	String userid;
+	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ_GENERATOR")
+	private String userid;
 	
-	@Column(name="USER_PASSWORD")
-	String userpw;
+	@Column(name="user_password")
+	private String userpw;
 
-	@Column(name="USER_NAME", nullable = true)
-	String username;
+	@Column(name="user_name", nullable = true)
+	private String username;
 	
-	String nickname;
+	private String nickname;
 
-	@Column(name="USER_ADDRESS", nullable = true)
-	String useraddress;
-	@Column(name="USER_PHONE", unique = true, nullable = false)
-	String userphone;
-	@Column(name="USER_EMAIL", nullable = true)
-	String useremail;
-	@Column(name="USER_PHOTO", nullable = true)
-	String userphoto;
+	@Column(name="user_address", nullable = true)
+	private String useraddress;
+	@Column(name="user_phone", unique = true, nullable = false)
+	private String userphone;
+	@Column(name="user_email", nullable = true)
+	private String useremail;
+	@Column(name="user_phone", nullable = true)
+	private String userphoto;
 	
-	//@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, )
-	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private UserBodyVO body;
 	
 }
