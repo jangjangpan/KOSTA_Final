@@ -38,7 +38,7 @@ public class UserVO {
 	String userphone;
 	@Column(name="USER_EMAIL", nullable = true)
 	String useremail;
-	@Column(name="USER_PHONE", nullable = true)
+	@Column(name="USER_PHOTO", nullable = true)
 	String userphoto;
 	
 	//@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, )
