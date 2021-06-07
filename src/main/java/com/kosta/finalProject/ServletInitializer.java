@@ -1,4 +1,4 @@
-package com.kosta.sbproject;
+package com.kosta.finalProject;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
