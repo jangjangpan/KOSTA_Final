@@ -25,27 +25,27 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "USER_TB")
+@Table(name = "user_TB")
 public class UserVO {
 	@Id
-	@Column(name="USER_ID")
+	@Column(name="user_id")
 	String userid;
 	
-	@Column(name="USER_PASSWORD")
+	@Column(name="user_password")
 	String userpw;
 
-	@Column(name="USER_NAME", nullable = true)
+	@Column(name="user_name", nullable = true)
 	String username;
 	
 	String nickname;
 
-	@Column(name="USER_ADDRESS", nullable = true)
+	@Column(name="user_address", nullable = true)
 	String useraddress;
-	@Column(name="USER_PHONE", unique = true, nullable = false)
+	@Column(name="user_phone", unique = true, nullable = false)
 	String userphone;
-	@Column(name="USER_EMAIL", nullable = true)
+	@Column(name="user_email", nullable = true)
 	String useremail;
-	@Column(name="USER_PHOTO", nullable = true)
+	@Column(name="user_phone", nullable = true)
 	String userphoto;
 	
 	@JsonIgnore
