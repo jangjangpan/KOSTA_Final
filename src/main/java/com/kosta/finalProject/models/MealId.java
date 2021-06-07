@@ -25,7 +25,7 @@ public class MealId implements Serializable {
 	@Column(name = "meal_date")
 	Date mealDate;
 	
-	@Column(name = "user_id")
+	// ManyToOne엔 Column 속성 사용 불가
 	@ManyToOne
 	UserVO user; // user_id가 들어올 곳
 }
