@@ -43,8 +43,7 @@ public class UserVO {
 	@Column(name="user_phone", nullable = true)
 	private String userphoto;
 	
-	@OneToOne
-	@JoinColumn(name = "user_id")
+	@OneToOne(mappedBy = "user") // mappedBy : 양방향 Mapping 시 '내가 관계의 주인임'을 표현
 	private UserBodyVO body;
 	
 }
