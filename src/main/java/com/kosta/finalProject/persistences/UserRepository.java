@@ -1,5 +1,9 @@
 package com.kosta.finalProject.persistences;
 
-public interface UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.kosta.finalProject.models.UserVO;
+
+public interface UserRepository extends CrudRepository<UserVO, String> {
 
 }

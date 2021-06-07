@@ -1,0 +1,61 @@
+package com.kosta.finalProject;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import javax.transaction.Transactional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+
+import com.kosta.finalProject.models.MealCerfVO;
+import com.kosta.finalProject.models.MealId;
+import com.kosta.finalProject.models.UserVO;
+import com.kosta.finalProject.persistences.UserRepository;
+
+@Commit
+@SpringBootTest
+public class UserTest {
+	@Autowired
+	UserRepository repo;
+	
+	@Transactional
+	@Test
+	public void insertMealCerfs() {
+		repo.findById("test1").ifPresent(user -> {
+			List<MealCerfVO> mealCerfs = user.getMealCerfs();
+			MealId mealId = new MealId();
+			mealId.setMealDate(new Date(System.currentTimeMillis()));
+			mealId.setUser(user);
+			MealCerfVO meal = MealCerfVO.builder()
+					.breakfastImage("breakfast")
+					.lunchImage("lunch")
+					.dinnerImage("dinner")
+					.mealId(mealId)
+					.build();
+			mealCerfs.add(meal);
+			repo.save(user);
+		});
+	}
+	
+	//@Test
+	public void insertUser() {
+		IntStream.range(1, 6).forEach(i -> {
+			UserVO user = UserVO.builder()
+					.userid("test" + i)
+					.userpw("qwer")
+					.username("name" + i)
+					.nickname("nickname" + i)
+					.useraddress("address" + i)
+					.userphone("010-1111-2222" + i)
+					.useremail("email" + i + "@gmail.com")
+					.userphone("photo" + i + ".jpg")
+					.build();
+			System.out.println("UserToString" + user);
+			repo.save(user);
+		});
+	}
+}

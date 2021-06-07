@@ -4,6 +4,7 @@ package com.kosta.finalProject.models;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Table(name = "meal_cerf_TB")
 public class MealCerfVO {
-	@EmbeddedId
+	@Id
 	MealId mealId;
 	
 	@Column(name = "breakfast_image")

@@ -1,27 +1,34 @@
 package com.kosta.finalProject.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "USER_TB")
 public class UserVO {
-
 	@Id
 	@Column(name="USER_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	String userid;
 	
 	@Column(name="USER_PASSWORD")
@@ -41,7 +48,7 @@ public class UserVO {
 	@Column(name="USER_PHOTO", nullable = true)
 	String userphoto;
 	
-	//@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, )
-	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "mealId.user", cascade = CascadeType.ALL)
+	List<MealCerfVO> mealCerfs;
 }
