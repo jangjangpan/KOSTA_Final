@@ -22,12 +22,13 @@ public class LoginController {
 	    
 	    @RequestMapping("/login")
 	    public String home(Model model) {
+	    	logger.info("loginPage");
 	    	return "aa";
 	    }
 	    
 	    @GetMapping(value = "/logout")
 	    public String LogoutPage(HttpServletRequest request,HttpServletResponse response) {
-	       
+	    	logger.info("logoutttt");
 	        return "redirect:/login";
 }
 }
