@@ -38,7 +38,7 @@ public class UserBodyVO {
 	@Column(name="user_image", nullable = true)
 	String userimage;
 	
-	@OneToOne
+	@OneToOne // 부모는 자식을 모르지만, 자식은 부모를 알아야 한다!
 	@JoinColumn(name = "user_id")
 	private UserVO user;
 }

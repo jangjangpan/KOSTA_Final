@@ -45,7 +45,7 @@ public class UserVO {
 	String userphone;
 	@Column(name="user_email", nullable = true)
 	String useremail;
-	@Column(name="user_phone", nullable = true)
+	@Column(name="user_photo", nullable = true)
 	String userphoto;
 	
 	@JsonIgnore
