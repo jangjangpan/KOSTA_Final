@@ -37,6 +37,8 @@ public class UserBodyVO {
 	double weight;
 	@Column(name="user_image", nullable = true)
 	String userImage;
+	@Column(name="user_BMI" , nullable = true)
+	int userBmi;
 	
 	@OneToOne // 부모는 자식을 모르지만, 자식은 부모를 알아야 한다!
 	@JoinColumn(name = "user_id")
