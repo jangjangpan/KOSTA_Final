@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -16,6 +19,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "BMI_TB")
 public class BMIVO {
 	@Id
@@ -23,9 +29,9 @@ public class BMIVO {
 	@Column(name="Seoul_district")
 	String district;	
 	
-	float under_weight;
-	float normal_weight;
-	float over_weight;
-	float bmi_avg;
+	float underWeight;
+	float normalWeight;
+	float overWeight;
+	float bmiAvg;
 	
 }
