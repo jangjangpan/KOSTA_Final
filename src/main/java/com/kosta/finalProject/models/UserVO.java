@@ -29,24 +29,24 @@ import lombok.ToString;
 public class UserVO {
 	@Id
 	@Column(name="user_id")
-	String userid;
+	String userId;
 	
 	@Column(name="user_password")
-	String userpw;
+	String userPw;
 
 	@Column(name="user_name", nullable = true)
-	String username;
+	String userName;
 	
-	String nickname;
+	String nickName;
 
 	@Column(name="user_address", nullable = true)
-	String useraddress;
+	String userAddress;
 	@Column(name="user_phone", unique = true, nullable = false)
-	String userphone;
+	String userPhone;
 	@Column(name="user_email", nullable = true)
-	String useremail;
+	String userEmail;
 	@Column(name="user_photo", nullable = true)
-	String userphoto;
+	String userPhoto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "mealId.user", cascade = CascadeType.ALL)

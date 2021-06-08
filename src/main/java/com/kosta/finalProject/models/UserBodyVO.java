@@ -25,18 +25,18 @@ public class UserBodyVO {
 	@Id
 	@Column(name="body_num")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BODY_SEQ_GENERATOR")
-	int bodynum;
+	int bodyNum;
 	@Column(length = 1) // length는 String만 사용 가능
 	String gender;
 	@Column(name="user_age", length = 3)
-	int userage;
+	int userAge;
 
 	@Column(nullable = true)
 	double height;
 	@Column(nullable = true)
 	double weight;
 	@Column(name="user_image", nullable = true)
-	String userimage;
+	String userImage;
 	
 	@OneToOne // 부모는 자식을 모르지만, 자식은 부모를 알아야 한다!
 	@JoinColumn(name = "user_id")
