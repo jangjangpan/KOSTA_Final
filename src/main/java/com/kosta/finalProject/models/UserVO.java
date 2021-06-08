@@ -25,28 +25,28 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "USER_TB")
+@Table(name = "user_TB")
 public class UserVO {
 	@Id
-	@Column(name="USER_ID")
-	String userid;
+	@Column(name="user_id")
+	String userId;
 	
-	@Column(name="USER_PASSWORD")
-	String userpw;
+	@Column(name="user_password")
+	String userPw;
 
-	@Column(name="USER_NAME", nullable = true)
-	String username;
+	@Column(name="user_name", nullable = true)
+	String userName;
 	
-	String nickname;
+	String nickName;
 
-	@Column(name="USER_ADDRESS", nullable = true)
-	String useraddress;
-	@Column(name="USER_PHONE", unique = true, nullable = false)
-	String userphone;
-	@Column(name="USER_EMAIL", nullable = true)
-	String useremail;
-	@Column(name="USER_PHOTO", nullable = true)
-	String userphoto;
+	@Column(name="user_address", nullable = true)
+	String userAddress;
+	@Column(name="user_phone", unique = true, nullable = false)
+	String userPhone;
+	@Column(name="user_email", nullable = true)
+	String userEmail;
+	@Column(name="user_photo", nullable = true)
+	String userPhoto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "mealId.user", cascade = CascadeType.ALL)

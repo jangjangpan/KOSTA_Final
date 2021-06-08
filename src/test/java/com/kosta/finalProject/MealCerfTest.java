@@ -24,7 +24,7 @@ public class MealCerfTest {
 			MealId mealId = new MealId();
 			mealId.setMealDate(new Date(System.currentTimeMillis()));
 			UserVO user = new UserVO();
-			user.setUserid("test" + i);
+			user.setUserId("test" + i);
 			mealId.setUser(user);
 			MealCerfVO meal = MealCerfVO.builder()
 					.mealId(mealId).build();

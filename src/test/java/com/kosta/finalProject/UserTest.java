@@ -45,14 +45,14 @@ public class UserTest {
 	public void insertUser() {
 		IntStream.range(1, 6).forEach(i -> {
 			UserVO user = UserVO.builder()
-					.userid("test" + i)
-					.userpw("qwer")
-					.username("name" + i)
-					.nickname("nickname" + i)
-					.useraddress("address" + i)
-					.userphone("010-1111-2222" + i)
-					.useremail("email" + i + "@gmail.com")
-					.userphone("photo" + i + ".jpg")
+					.userId("test" + i)
+					.userPw("qwer")
+					.userName("name" + i)
+					.nickName("nickname" + i)
+					.userAddress("address" + i)
+					.userPhone("010-1111-2222" + i)
+					.userEmail("email" + i + "@gmail.com")
+					.userPhone("photo" + i + ".jpg")
 					.build();
 			System.out.println("UserToString" + user);
 			repo.save(user);
