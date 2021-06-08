@@ -51,4 +51,8 @@ public class UserVO {
 	@JsonIgnore
 	@OneToMany(mappedBy = "mealId.user", cascade = CascadeType.ALL)
 	List<MealCerfVO> mealCerfs;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "exerciseId.user", cascade = CascadeType.ALL)
+	List<ExerciseRecordVO> exerciseRecords;
 }

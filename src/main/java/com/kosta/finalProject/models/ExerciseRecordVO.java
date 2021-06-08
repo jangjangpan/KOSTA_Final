@@ -1,6 +1,5 @@
 package com.kosta.finalProject.models;
 
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -21,15 +20,15 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "meal_cerf_tb")
-public class MealCerfVO {
+@Table(name = "exercise_record_tb")
+public class ExerciseRecordVO {
 	@EmbeddedId
-	private MealId mealId;
+	private ExerciseRecordId exerciseId;
 	
-	@Column(name = "breakfast_image")
-	private String breakfastImage;
-	@Column(name = "lunch_image")
-	private String lunchImage;	
-	@Column(name = "dinner_image")
-	private String dinnerImage;
+	@Column(name = "exercise_type")
+	private String exerciseType;
+	@Column(name = "exercise_time")
+	private int exerciseTime;
+	@Column(name = "exercise_image")
+	private String exerciseImage;
 }

@@ -20,13 +20,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class MealId implements Serializable {
+public class ExerciseRecordId implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Column(name = "meal_date")
-	private Date mealDate;
 	
-	// ManyToOne엔 Column 속성 사용 불가
+	@Column(name = "exercise_date")
+	private Date exerciseDate;
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserVO user; // user_id가 들어올 곳
