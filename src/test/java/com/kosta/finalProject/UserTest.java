@@ -1,6 +1,6 @@
 package com.kosta.finalProject;
 
-import java.sql.Date;
+import java.sql.Date; 
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,6 +15,8 @@ import com.kosta.finalProject.models.MealCerfVO;
 import com.kosta.finalProject.models.MealId;
 import com.kosta.finalProject.models.UserVO;
 import com.kosta.finalProject.persistences.UserRepository;
+import com.kosta.finalProject.services.LoginService;
+
 
 @Commit
 @SpringBootTest
@@ -22,8 +24,10 @@ public class UserTest {
 	@Autowired
 	UserRepository repo;
 	
-	//@Transactional
-	//@Test
+	@Autowired
+	LoginService loginservice;
+//	@Transactional
+//	@Test
 	public void insertMealCerfs() {
 		repo.findById("test1").ifPresent(user -> {
 			List<MealCerfVO> mealCerfs = user.getMealCerfs();
@@ -41,7 +45,7 @@ public class UserTest {
 		});
 	}
 	
-	@Test
+	//@Test
 	public void insertUser() {
 		IntStream.range(1, 6).forEach(i -> {
 			UserVO user = UserVO.builder()
@@ -57,5 +61,21 @@ public class UserTest {
 			System.out.println("UserToString" + user);
 			repo.save(user);
 		});
+	}
+	@Test
+	public void insertUser2() {		
+	IntStream.range(1, 4).forEach(i->{
+		UserVO user = UserVO.builder()
+		.userId("sample" + i)
+		.userPw("qwer")
+		.userName("name" + i)
+		.nickName("nickname" + i)
+		.userAddress("address" + i)
+		.userPhone("010-1111-2222" + i)
+		.userEmail("email" + i + "@gmail.com")
+		.userPhone("photoo"+ i+ ".jpg")
+		.build();
+		loginservice.joinUser(user);
+	});
 	}
 }

@@ -24,11 +24,18 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping("/hello")
     public String root() {
-        return "index";
+        return "hello";
     }
-
+    @RequestMapping("/logout")
+    public void root2() {
+ 
+    }
+    @RequestMapping("/accessDenied")
+    public void root3() {
+ 
+    }
     public UserVO getUser() { //
         UserVO user = new UserVO();
         SecurityContext ctx = SecurityContextHolder.getContext();
