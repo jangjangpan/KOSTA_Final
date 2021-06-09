@@ -33,7 +33,6 @@ public class ExerciseTypeVO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int exerciseTypeNum;
 	String exerciseTypeName;
-	
 	/*
 	//@JsonIgnore
 	@OneToMany(mappedBy = "etype", //fk이름 "메여있다"

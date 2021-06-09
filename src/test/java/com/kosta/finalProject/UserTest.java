@@ -22,8 +22,8 @@ public class UserTest {
 	@Autowired
 	UserRepository repo;
 	
-	@Transactional
-	@Test
+	//@Transactional
+	//@Test
 	public void insertMealCerfs() {
 		repo.findById("test1").ifPresent(user -> {
 			List<MealCerfVO> mealCerfs = user.getMealCerfs();
@@ -41,7 +41,7 @@ public class UserTest {
 		});
 	}
 	
-	//@Test
+	@Test
 	public void insertUser() {
 		IntStream.range(1, 6).forEach(i -> {
 			UserVO user = UserVO.builder()

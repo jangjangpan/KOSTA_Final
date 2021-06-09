@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,7 @@ import lombok.ToString;
 @NoArgsConstructor//(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@EqualsAndHashCode(of = "userId")
 @Table(name = "user_TB")
 public class UserVO {
 	@Id
