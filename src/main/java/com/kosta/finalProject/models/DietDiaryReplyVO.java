@@ -32,7 +32,7 @@ import lombok.ToString;
 @Table(name = "DIET_DIARY_REPLY_TB")
 public class DietDiaryReplyVO {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int diaryRplNum;
 	
 	@ManyToOne
@@ -41,23 +41,12 @@ public class DietDiaryReplyVO {
 	@ManyToOne
 	DietDiaryBoardVO dboard; //FK 참조키
 	
-	@Column(name= "TITLE")
-	String title;
-	
-	
+
 	@Column(name= "CONTENT")
 	String content;
-	
-	@Column(name= "PHOTO")
-	String photo;
 	
 	@Column(name = "CREATION_DATE")
 	@CreationTimestamp
 	Timestamp creationDate;
-	
-	@Column(name = "MODIFIED_DATE")
-	@UpdateTimestamp
-	Timestamp modifiedDate;	
-	
 	
 }
