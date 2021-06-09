@@ -31,9 +31,9 @@ public class FirstTest {
 	@Autowired
 	ExerciseTypeRefRepository etrrepository;
 	
-	//@Test //여러건 insert
+	@Test //여러건 insert
 	public void insertBusiness() {
-		IntStream.range(1,101).forEach(i->{
+		IntStream.range(1,3).forEach(i->{
 			BusinessVO b= new BusinessVO();
 			b.setBusinessId("business"+i);
 			b.setBusinessPassword("bp"+i);
@@ -63,7 +63,7 @@ public class FirstTest {
 		etrepository.save(et);
 	}
 	
-	@Test
+	//@Test
 	public void insertExerciseTypeRef() {
 		ExerciseTypeRefVO etr= new ExerciseTypeRefVO();
 		CenterVO c= new CenterVO();
@@ -71,8 +71,32 @@ public class FirstTest {
 		ExerciseTypeVO e= new ExerciseTypeVO();
 		e.setExerciseTypeNum(1);
 		
-		etr.setCenter(c);
-		etr.setEtype(e);
+		//etr.setCenter(c);
+		//etr.setEtype(e);
 		etrrepository.save(etr);
+	}
+	
+	//@Test
+	public void insert3datas() {
+		
+		CenterVO c= new CenterVO();
+		BusinessVO b= new BusinessVO();
+		b.setBusinessId("business1");
+		c.setBusiness(b);
+		c.setCenterInfo("kosta의 첫번째 체육관입니다.");
+		c.setCenterTitle("kosta센터1");
+		c.setCenterPreferance(5L);
+		c.setCorporateNum("216131321");
+		
+		List<ExerciseTypeRefVO> etrlist= new ArrayList<>();
+		ExerciseTypeRefVO etr= new ExerciseTypeRefVO();
+		//etr.setCenter(c);
+		ExerciseTypeVO et= new ExerciseTypeVO();
+		et.setExerciseTypeName("방송댄스");
+		//etr.setEtype(et);
+		etrlist.add(etr);
+		//c.setEtypes(etrlist);
+		
+		crepository.save(c);
 	}
 }

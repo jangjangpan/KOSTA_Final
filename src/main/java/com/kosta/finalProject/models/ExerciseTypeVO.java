@@ -33,12 +33,13 @@ public class ExerciseTypeVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EXERCISETYPE_SEQ_GENERATOR")
 	int exerciseTypeNum;
-	
 	String exerciseTypeName;
 	
+	/*
 	//@JsonIgnore
 	@OneToMany(mappedBy = "etype", //fk이름 "메여있다"
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY) //fetch = FetchType.EAGER
 	List<ExerciseTypeRefVO> etypes;
+	*/
 }

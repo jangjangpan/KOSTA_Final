@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -37,14 +39,20 @@ public class CenterVO {
 	String centerTitle;
 	String centerInfo;
 	Long centerPreferance;
+	String centerAddress;
+	String centerArea1;
+	String centerArea2;
+	
 	
 	//여러 개의 center은 하나의 사업자(business)을 참조한다.
 	@ManyToOne
 	BusinessVO business; //fk  business_business 칼럼 추가된다.
 
-	//@JsonIgnore
+	/*
+	@JsonIgnore
 	@OneToMany(mappedBy = "center", //fk이름 "메여있다"
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY) //fetch = FetchType.EAGER
 	List<ExerciseTypeRefVO> etypes;
+	*/
 }

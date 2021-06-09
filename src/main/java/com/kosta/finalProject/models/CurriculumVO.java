@@ -1,14 +1,18 @@
 package com.kosta.finalProject.models;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,17 +29,24 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of="trainerNum")
-@Table(name="trainer")
-public class TrainerVO {
+@EqualsAndHashCode(of="curriculumNum")
+@Table(name="curriculum")
+public class CurriculumVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int trainerNum;
-	String trainerName;
-	String trainerPhone;
-	String trainerEmail;
-	String trainerInfo;
-	String trainerPhoto;
+	int curriculumNum;
+	String curriculumTitle;
+	String curriculumInfo;
+	String curriculumDate;
+	String curriculumTime;
+	int curriculumAll;
+	int curriculumState;
+	
+	@CreationTimestamp
+	Timestamp curriculumFirst;
+	
+	@UpdateTimestamp
+	Timestamp curriculumUpdate;
 	
 	@ManyToOne
 	@JoinColumns({
@@ -46,4 +57,7 @@ public class TrainerVO {
 	})
 	ExerciseTypeRefVO etyperef;
 	
+	@ManyToOne
+	@JoinColumn(name="trainerNum" ,referencedColumnName = "trainerNum")
+	TrainerVO trainer;
 }

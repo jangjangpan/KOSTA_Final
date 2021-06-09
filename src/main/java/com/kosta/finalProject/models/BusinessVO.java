@@ -37,7 +37,7 @@ public class BusinessVO {
 	String businessAddress;
 	String businessPhone;
 	
-	//@JsonIgnore
+	@JsonIgnore
 	@OneToMany(mappedBy = "business", //fk이름 "메여있다"
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY) //fetch = FetchType.EAGER
