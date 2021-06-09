@@ -1,34 +1,43 @@
 package com.kosta.finalProject.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.kosta.finalProject.services.LoginService;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-import lombok.RequiredArgsConstructor;
+import com.kosta.finalProject.models.UserVO;
 
-@RequiredArgsConstructor
+
 @Controller
 public class LoginController {
-	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	    private final LoginService loginService;
-	    
-	    @RequestMapping("/login")
-	    public String home(Model model) {
-	    	logger.info("loginPage");
-	    	return "aa";
-	    }
-	    
-	    @GetMapping(value = "/logout")
-	    public String LogoutPage(HttpServletRequest request,HttpServletResponse response) {
-	    	logger.info("logoutttt");
-	        return "redirect:/login";
-}
+    @GetMapping(value = "/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/index")
+    public String root() {
+        return "index";
+    }
+
+    public UserVO getUser() { //
+        UserVO user = new UserVO();
+        SecurityContext ctx = SecurityContextHolder.getContext();
+        Authentication auth = ctx.getAuthentication();
+        if (auth.getPrincipal() instanceof UserDetails) user = (UserVO) auth.getPrincipal();
+        return user;
+    }
+
+    public HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+    }
 }

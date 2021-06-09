@@ -1,6 +1,9 @@
 package com.kosta.finalProject.models;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,8 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,7 +54,10 @@ public class UserVO {
 	String userEmail;
 	@Column(name="user_photo", nullable = true)
 	String userPhoto;
-	
+
+	UserRoleEnumType urole;
+
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "mealId.user", cascade = CascadeType.ALL)
 	List<MealCerfVO> mealCerfs;
