@@ -31,7 +31,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Table(name="exercisetyperef")
 public class ExerciseTypeRefVO {
-	
 	@EmbeddedId
 	ExerciseTypeRefVOId id;
 	

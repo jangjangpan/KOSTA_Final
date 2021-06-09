@@ -29,9 +29,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of="exerciseTypeNum")
 @Table(name="exercisetype")
 public class ExerciseTypeVO {
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EXERCISETYPE_SEQ_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int exerciseTypeNum;
 	String exerciseTypeName;
 	
