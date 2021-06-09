@@ -19,9 +19,9 @@ import lombok.extern.java.Log;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
-	/*
-	 * @Autowired LoginService loginservice;
-	 */
+	
+	//private final LoginService loginService;
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();   //Spring Security에서 제공하는 비밀번호 암호화 객체

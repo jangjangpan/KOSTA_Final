@@ -29,7 +29,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor//(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
 @Table(name = "user_TB")
