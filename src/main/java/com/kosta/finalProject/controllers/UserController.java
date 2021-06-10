@@ -18,9 +18,9 @@ public class UserController {
 	
 	@PostMapping("")
 	public String create(UserVO user) {
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		user.setUserPw(passwordEncoder.encode(user.getUserPw()));
-//		userrepo.save(user);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		user.setUserPw(passwordEncoder.encode(user.getUserPw()));
+		userrepo.save(user);
 		return "redirect:/";
 	}
 }
