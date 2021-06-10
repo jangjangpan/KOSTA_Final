@@ -20,7 +20,9 @@ import com.kosta.finalProject.models.UserVO;
 public class LoginController {
 
     @GetMapping(value = "/login")
-    public String login() {
+    public String login(HttpServletRequest req) {
+//    	String referer = req.getHeader("Referer"); // 현재 요청된 페이지의 이전 페이지 주소 정보를 포함
+//    	req.getSession().setAttribute("prevPage", referer);
         return "login";
     }
 

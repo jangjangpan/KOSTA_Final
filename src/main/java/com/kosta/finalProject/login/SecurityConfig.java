@@ -3,14 +3,17 @@ package com.kosta.finalProject.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.kosta.finalProject.services.CustomUserDetailsService;
 import com.kosta.finalProject.services.LoginService;
 
 import lombok.extern.java.Log;
@@ -23,6 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	@Autowired
 	 LoginService loginService;
 	
+	@Autowired
+	CustomUserDetailsService cusService;
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(cusService).passwordEncoder(passwordEncoder());
+	}
+//	
+//	@Bean
+//	public AuthenticationSuccessHandler successHandler() {
+//		return new CustomLoginSuccessHandler("/defaultUrl"); //default로 이동할 url
+//	}
+//	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();   //Spring Security에서 제공하는 비밀번호 암호화 객체
@@ -56,4 +72,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 				.and().csrf().disable();  //csrf(크로스사이트 위조요청에 대한 설정) 토큰 비활성화 (test시에는 disable권장)            
 		http.exceptionHandling().accessDeniedPage("/accessDenied"); // 403 예외처리 핸들링   권한이 없는 대상이 접속을시도했을 때
 	}
+	
+	
 }
